@@ -16,7 +16,12 @@ public class AppController {
     private AppService appService;
 
     @GetMapping("/user")
-    public User getUserDetails(@RequestParam("username") final String username) {
+    public User getUserDetails(@RequestParam("username") String username) {
         return appService.getUser(username);
+    }
+
+    @GetMapping("/userV2")
+    public User getUserDetailsV2(@RequestParam("username") String username) {
+        return appService.getUserV2(username);
     }
 }
