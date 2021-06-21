@@ -2,6 +2,7 @@ package org.sds.wsdemo.controller;
 
 import org.sds.wsdemo.modal.User;
 import org.sds.wsdemo.service.AppService;
+import org.sds.wsdemo.service.impl.AppServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
