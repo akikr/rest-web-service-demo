@@ -14,9 +14,9 @@ public class AppServiceImpl implements AppService {
     private static final String GIT_API_URI = "https://api.github.com/users/";
 
     private RestTemplate restTemplate;
-    private WebClient.Builder webClient;
+    private WebClient webClient;
 
-    public AppServiceImpl(RestTemplate restTemplate, WebClient.Builder webClient) {
+    public AppServiceImpl(RestTemplate restTemplate, WebClient webClient) {
         this.restTemplate = restTemplate;
         this.webClient = webClient;
     }
@@ -25,6 +25,7 @@ public class AppServiceImpl implements AppService {
     public User getUser(String username) {
         ResponseEntity<CustomUser> responseEntity = restTemplate.getForEntity(GIT_API_URI + username, CustomUser.class);
         CustomUser response = responseEntity.getBody();
+
         User user = new User();
         user.setId(response.getId());
         user.setName(response.getName());
@@ -38,12 +39,13 @@ public class AppServiceImpl implements AppService {
 
     @Override
     public User getUserV2(String username) {
-        CustomUser response = webClient.build()
+        CustomUser response = webClient
                 .get()
                 .uri(GIT_API_URI + username)
                 .retrieve()
                 .bodyToMono(CustomUser.class)
                 .block();
+
         User user = new User();
         user.setId(response.getId());
         user.setName(response.getName());

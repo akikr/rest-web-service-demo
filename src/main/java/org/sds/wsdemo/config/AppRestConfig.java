@@ -14,7 +14,7 @@ public class AppRestConfig {
     }
 
     @Bean
-    public WebClient.Builder getWebClientBuilder() {
-        return WebClient.builder();
+    public WebClient getWebClient() {
+        return WebClient.create();
     }
 }
